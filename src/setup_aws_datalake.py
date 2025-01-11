@@ -10,9 +10,9 @@ import os
 load_dotenv()
 
 # AWS configurations
-region = "us-east-1"  # Replace with your preferred AWS region
-bucket_name = "sports-analytics-data-lake"  # Change to a unique S3 bucket name
-glue_database_name = "glue_nba_data_lake"
+region = "eu-west-2"  # Replace with your preferred AWS region
+bucket_name = "pmaxi_sports-analytics-data-lake"  # Change to a unique S3 bucket name
+glue_database_name = "pmaxi_glue_nba_data_lake"
 athena_output_location = f"s3://{bucket_name}/athena-results/"
 
 # Sportsdata.io configurations (loaded from .env)
@@ -27,7 +27,7 @@ athena_client = boto3.client("athena", region_name=region)
 def create_s3_bucket():
     """Create an S3 bucket for storing sports data."""
     try:
-        if region == "us-east-1":
+        if region == "eu-west-2":
             s3_client.create_bucket(Bucket=bucket_name)
         else:
             s3_client.create_bucket(
